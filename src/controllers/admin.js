@@ -91,7 +91,7 @@ const UpdateRoleByAdmin = async (req, res) => {
 		}
 
 		// Toggle the user's role
-		const newRole = userToUpdate.role === "user" ? "vendor" : "user";
+		const newRole = userToUpdate.role === "user" ? "admin" : "user";
 
 		// Update the user's role
 		const updatedUser = await User.findByIdAndUpdate(
