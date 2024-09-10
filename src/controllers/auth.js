@@ -33,9 +33,9 @@ const registerUser = async (req, res) => {
     const user = await User.create({
       ...request,
       otp,
-      role:"super admin",
-      isVerified:true
-      // role: Boolean(UserCount) ? request.role || "user" : "super admin",
+      // role:"super admin",
+      isVerified:true,
+       role: Boolean(UserCount) ? request.role || "user" : "super admin",
     });
     //process.env.JWT_SECRET = "123456";
     //  console.log(process.env.JWT_SECRET);
