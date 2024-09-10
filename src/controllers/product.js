@@ -938,6 +938,7 @@ const updateProductByAdmin = async (req, res) => {
     const admin = await getAdmin(req, res);
     const { slug } = req.params;
     const { images, ...body } = req.body;
+    console.log("UPDATE PROIDCYYY" , body)
 
     const updatedImages = await Promise.all(
       images.map(async (image) => {
@@ -947,13 +948,15 @@ const updateProductByAdmin = async (req, res) => {
     );
 
     const updated = await Product.findOneAndUpdate(
-      { slug: slug, vendor: admin._id },
+      { slug: slug },
       {
         ...body,
         images: updatedImages,
       },
       { new: true, runValidators: true }
     );
+
+    console.log("UPDATEDDDDd" , updated)
 
     return res.status(201).json({
       success: true,
